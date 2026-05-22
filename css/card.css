@@ -1,0 +1,157 @@
+/* Кошик */
+.cart-icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #fcfcfc; 
+    font-size: 1rem;
+}
+.cart-icon {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.cart-icon i {
+    font-size: 0.9rem; 
+}
+
+.cart-count {
+    font-family: Arial, sans-serif;
+    font-weight: normal;
+}
+
+.cart-icon:hover {
+    color: #e67e22;
+}
+
+/* Панель кошика */
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -400px; 
+    width: 400px;
+    height: 100vh;
+    background-color: #fff;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    z-index: 3000;
+    transition: right 0.4s ease; 
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-sidebar.open {
+    right: 0;
+}
+
+/* Шапка панелі */
+.cart-sidebar-header {
+    padding: 30px;
+    border-bottom: 1px solid #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-title {
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+}
+
+.close-cart {
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Затемнення фону */
+.cart-sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    z-index: 2500;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.cart-sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+}
+
+
+.cart-sidebar-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    text-align: left;
+    overflow-y: auto;
+}
+
+.btn-checkout:hover { opacity: 0.8; }
+.btn-view-cart:hover { background: #f9f9f9; }
+
+/* Контент (повідомлення про порожній кошик) */
+.empty-message {
+    color: #777;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+/* Основний текст у кошику */
+.cart-sidebar-content {
+    color: #111; /* темний текст для білого фону */
+    font-family: Arial, sans-serif;
+}
+
+/* Назви товарів */
+.cart-item-row span,
+.cart-item-row div {
+    color: #111;
+}
+
+/* Ціна */
+.cart-item-row .price,
+.cart-item-row div[style*="font-weight: bold"] {
+    color: #000;
+}
+
+/* Заголовок кошика */
+.cart-title {
+    color: #000;
+}
+
+/* Порожній кошик */
+.empty-message {
+    color: #555;
+}
+
+/* Кнопки */
+.btn-checkout {
+    background: #000;
+    color: #fff;
+}
+
+.btn-view-cart {
+    background: #fff;
+    color: #000;
+    border: 1px solid #000;
+}
+
+.cart-sidebar {
+    z-index: 20000;
+}
+
+.cart-sidebar-overlay {
+    z-index: 19999;
+}

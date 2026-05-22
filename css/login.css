@@ -1,0 +1,224 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #faf8f4;
+}
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+}
+
+.login-image {
+    width: 50%;
+    background-image: url("/assets/image.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 60px;
+}
+
+.overlay h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.overlay p {
+    font-size: 18px;
+    max-width: 420px;
+    line-height: 1.6;
+}
+
+.login-form-side {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px;
+    background: white;
+}
+
+.back-link {
+    color: #222;
+    text-decoration: none;
+    margin-bottom: 40px;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.login-box {
+    max-width: 420px;
+}
+
+.login-box h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.login-box p {
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #ddd;
+    font-size: 15px;
+    border-radius: 6px;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #000;
+}
+
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.login-options a {
+    color: #222;
+    text-decoration: none;
+}
+
+.login-btn {
+    width: 100%;
+    background: black;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.divider {
+    text-align: center;
+    margin: 25px 0;
+    color: #999;
+    font-size: 14px;
+}
+
+.google-btn {
+    width: 100%;
+    background: white;
+    border: 1px solid #ddd;
+    padding: 14px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.google-btn i {
+    margin-right: 8px;
+}
+
+.signup-text {
+    margin-top: 25px;
+    font-size: 14px;
+    color: #555;
+}
+
+.signup-text a {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+@media (max-width: 900px) {
+    .login-page {
+        flex-direction: column;
+    }
+
+    .login-image,
+    .login-form-side {
+        width: 100%;
+    }
+
+    .login-image {
+        height: 260px;
+    }
+
+    .login-form-side {
+        padding: 35px 25px;
+    }
+}
+
+.auth-form {
+    display: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: 0.35s ease;
+}
+
+.auth-form.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* залишаємо твій стиль перемикача */
+.auth-switch {
+    position: relative;
+    display: flex;
+    background: #f5f5f5;
+    border-radius: 999px;
+    padding: 4px;
+    margin-bottom: 35px;
+}
+
+.auth-tab {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    z-index: 2;
+}
+
+.auth-slider {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: calc(50% - 4px);
+    height: calc(100% - 8px);
+    background: white;
+    border-radius: 999px;
+    transition: transform 0.3s ease;
+}
+
+.auth-switch.signup .auth-slider {
+    transform: translateX(100%);
+}
+

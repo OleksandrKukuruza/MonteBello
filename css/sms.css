@@ -1,0 +1,114 @@
+.chat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    font-family: Arial, sans-serif;
+}
+
+/* Кнопка чату */
+.chat-button {
+    width: 60px;
+    height: 60px;
+    background-color: #000000 !important; /* Чорний фон */
+    border-radius: 50%;
+    border: 2px solid #D4AF37;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    
+    /* Центрування іконки */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+    /* Анімація пульсації */
+    animation: pulse-black 2s infinite;
+}
+
+/* Сама іконка всередині кнопки */
+.chat-button i, 
+.chat-button .far, 
+.chat-button .fa-comment-dots {
+    color: #ffffff !important; /* Білий колір */
+    font-size: 26px !important;
+}
+
+/* Анімація пульсації кнопки */
+@keyframes pulse-black {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 0, 0, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); }
+}
+
+
+/* Вікно чату */
+.chat-window {
+    display: none; /* Приховано за замовчуванням */
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+    width: 320px;
+    height: 450px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Шапка чату */
+.chat-header {
+    background: #ffb8058d; /* Світло-жовтий колір */
+    padding: 20px;
+    position: relative;
+}
+
+.chat-header h4 { margin: 0; font-size: 18px; color: #000000;}
+.chat-header p { margin: 5px 0 0; font-size: 13px; color: #555; }
+
+.online-dot {
+    height: 8px; width: 8px;
+    background-color: #2ecc71;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px; right: 15px;
+    background: none; border: none;
+    font-size: 24px; cursor: pointer;
+}
+
+/* Поле вводу повідомлення (смс) */
+.chat-body { flex: 1; background: white; }
+
+.chat-footer {
+    padding: 15px;
+    border-top: 1px solid #eee;
+    display: flex;
+    align-items: center;
+}
+
+.chat-footer input {
+    border: none;
+    flex: 1;
+    outline: none;
+    font-size: 14px;
+}
+
+/* Анімація мигання курсора/рамки при вводі тексту */
+@keyframes blink-border {
+    0% { border-bottom-color: #e67e22; }
+    50% { border-bottom-color: transparent; }
+    100% { border-bottom-color: #e67e22; }
+}
+
+.chat-footer input:focus {
+    border-bottom: 1px solid #e67e22;
+    animation: blink-border 2s infinite;
+}
+
+.footer-icons { color: #888; cursor: pointer; display: flex; gap: 10px; }

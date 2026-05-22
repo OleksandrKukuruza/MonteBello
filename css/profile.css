@@ -1,0 +1,732 @@
+body {
+    font-family: 'Georgia', serif; 
+    
+}
+        body { background-color: #000; color: #fff; }
+        .cart-main { flex: 2; border-top: 1px solid #333; }
+        .cart-summary { flex: 1; border-top: 1px solid #333; padding-top: 20px; }
+        .cart-item { display: flex; align-items: center; padding: 20px 0; border-bottom: 1px solid #333; }
+        .cart-item img { width: 80px; height: 80px; object-fit: cover; margin-right: 20px; }
+        .qty-box { border: 1px solid #fff; display: flex; align-items: center; padding: 5px; }
+        .qty-box button { background: none; color: #fff; border: none; cursor: pointer; padding: 0 10px; }
+        .checkout-btn { width: 100%; background: #fff; color: #000; border: none; padding: 15px; font-weight: bold; cursor: pointer; margin-top: 20px; }
+        .summary-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+        .checkout-form input,
+.checkout-form textarea {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    color: #fff;
+    box-sizing: border-box;
+    font-size: 15px;
+    min-height: 50px;
+}
+
+.checkout-form textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.checkout-form input::placeholder,
+.checkout-form textarea::placeholder {
+    color: #777;
+}
+
+.checkout-form input,
+.checkout-form textarea {
+    caret-color: #fff;
+}
+
+        
+        .last-order-card {
+            border: 1px solid #333;
+            padding: 18px;
+            margin-top: 15px;
+            background: #111;
+            border-radius: 8px;
+        }
+    
+        .last-order-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #ddd;
+        }
+    
+        .last-order-row strong {
+            color: #fff;
+        }
+    
+        .last-order-items {
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px solid #333;
+        }
+    
+        .last-order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+    
+        .last-order-total {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #333;
+            font-weight: bold;
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+        }
+    
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            text-transform: uppercase;
+            background: #222;
+            border: 1px solid #444;
+        }
+
+        .payment-methods {
+    margin: 12px 0 20px;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid #333;
+    background: #111;
+    margin-bottom: 8px;
+    cursor: pointer;
+    border-radius: 6px;
+    color: #fff;
+}
+
+.payment-option input {
+    accent-color: #fff;
+}
+
+
+
+
+
+.payment-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.75);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.payment-box {
+    width: 420px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 24px;
+    position: relative;
+}
+
+.payment-close {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.payment-box input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    background: #0b0b0b;
+    border: 1px solid #333;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+.payment-box input::placeholder {
+    color: #777;
+}
+
+.apple-pay-btn,
+.pay-now-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.apple-pay-btn {
+    background: #fff;
+    color: #000;
+}
+
+.pay-now-btn {
+    background: #fff;
+    color: #000;
+    margin-top: 4px;
+}
+
+.payment-divider {
+    text-align: center;
+    color: #777;
+    font-size: 13px;
+    margin: 16px 0;
+}
+
+.card-row {
+    display: flex;
+    gap: 10px;
+}
+
+.card-row input {
+    flex: 1;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    text-transform: uppercase;
+    border: 1px solid #444;
+}
+
+.status-paid {
+    background: rgba(50,180,90,.12);
+    border-color: rgba(50,180,90,.4);
+}
+
+.status-pending {
+    background: rgba(255,255,255,.06);
+}
+.profile-box {
+    border: 1px solid #333;
+    padding: 20px;
+    margin-top: 20px;
+    background: #111;
+    color: #fff;
+}
+.profile-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+.divider {
+    max-width: 1200px;
+    margin: 60px auto;
+    border: none;
+    border-top: 1px solid #333;
+}
+
+.reservation-section {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    padding: 0 20px;
+}
+
+.reservation-section h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+.profile-card {
+    border: 1px solid #333;
+    padding: 15px;
+    margin-top: 10px;
+    background: #111;
+    border-radius: 8px;
+}
+
+.profile-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #222;
+}
+
+.profile-row:last-child {
+    border-bottom: none;
+}
+
+.switcher {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin: 20px 0 10px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 999px;
+    width: fit-content;
+    padding: 6px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.switcher button {
+    background: transparent;
+    color: #888;
+    border: none;
+    padding: 12px 28px;
+    cursor: pointer;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.25s ease;
+}
+
+.switcher button:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.05);
+}
+
+.switcher button.active {
+    background: #fff;
+    color: #000;
+}
+
+.slider-wrapper {
+    max-width: 1200px;
+    margin: 20px auto 80px;
+}
+
+.slider {
+    display: flex;
+    width: 200%;
+    transition: transform 0.6s ease;
+}
+
+.panel {
+    width: 50%;
+    flex-shrink: 0;
+    margin-right: 250px;
+}
+
+/* ВАЖЛИВО: прибираємо зайві центрування які ламають layout */
+.cart-page-container {
+    display: flex;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+
+
+
+.cancel-btn {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    background: #ff3b3b;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cancel-btn:hover {
+    background: #d62828;
+}
+
+.cancel-btn:disabled {
+    cursor: not-allowed;
+}
+
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    border: 1px solid #444;
+}
+
+.status-booked {
+    background: rgba(255,255,255,0.05);
+}
+
+.status-cancelled {
+    background: rgba(255,0,0,0.1);
+    border-color: red;
+}
+
+
+
+
+
+
+
+.show-more-btn {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 8px;
+    background: #111;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.show-more-btn:hover {
+    background: #333;
+    transform: translateY(-1px);
+}
+
+.show-more-btn:active {
+    transform: translateY(0);
+}
+
+#adminBtn a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 8px 18px;
+
+    border: 1px solid rgba(230, 126, 34, 0.5);
+    border-radius: 30px;
+
+    background: rgba(230, 126, 34, 0.08);
+
+    color: #e67e22;
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+
+    transition: all 0.3s ease;
+}
+
+#adminBtn a:hover {
+    background: #e67e22;
+    color: #fff;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 20px rgba(230, 126, 34, 0.3);
+}
+
+#adminBtn a {
+    gap: 8px;
+}
+
+
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+/* TABLETS */
+@media (max-width: 1024px) {
+
+    .cart-page-container {
+        flex-direction: column;
+        gap: 40px;
+        padding: 0 20px;
+    }
+
+    .cart-main,
+    .cart-summary {
+        width: 100%;
+    }
+
+    .slider-wrapper {
+        width: 100%;
+        overflow: hidden;
+        margin: 20px auto 80px;
+    }
+    
+    .slider {
+        display: flex;
+        width: 200%;
+        transition: transform 0.6s ease;
+    }
+    
+    .panel {
+        width: 50%;
+        flex-shrink: 0;
+        margin-right: 0; /* ❌ ВИДАЛЯЄМО БАГ */
+        box-sizing: border-box;
+    }
+
+    .profile-box,
+    .profile-card,
+    .last-order-card {
+        padding: 16px;
+    }
+
+    .reservation-section {
+        padding: 0 20px;
+    }
+
+    .checkout-form input,
+    .checkout-form textarea {
+        font-size: 14px;
+    }
+
+    .payment-box {
+        width: 90%;
+    }
+
+    .divider {
+        margin: 40px auto;
+    }
+}
+
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    /* HEADER */
+    .header-content {
+        flex-direction: column;
+        gap: 18px;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+    }
+
+    .logo {
+        font-size: 1.7rem;
+    }
+
+    /* ADMIN BUTTON */
+    #adminBtn a {
+        padding: 7px 14px;
+        font-size: 13px;
+    }
+
+    /* CART PAGE */
+    .cart-page-container {
+        flex-direction: column;
+        gap: 30px;
+        padding: 0 15px;
+    }
+
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .cart-item img {
+        width: 100%;
+        height: 220px;
+        margin-right: 0;
+        border-radius: 10px;
+    }
+
+    .qty-box {
+        width: fit-content;
+    }
+
+    /* ORDER CARDS */
+    .order-card {
+        flex-direction: column;
+    }
+
+    .order-card-img {
+        width: 100%;
+        height: 220px;
+    }
+
+    .order-card-img img {
+        height: 100%;
+    }
+
+    /* PAYMENT MODAL */
+    .payment-box {
+        width: calc(100% - 30px);
+        padding: 20px;
+    }
+
+    .card-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    /* SWITCHER */
+    .switcher {
+        flex-wrap: wrap;
+        width: 100%;
+        border-radius: 20px;
+    }
+
+    .switcher button {
+        flex: 1;
+        min-width: 120px;
+        padding: 10px;
+    }
+
+    /* PROFILE */
+    .profile-row {
+        flex-direction: column;
+        gap: 6px;
+        align-items: flex-start;
+    }
+
+    /* LAST ORDERS */
+    .last-order-row,
+    .last-order-item,
+    .last-order-total {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    /* BUTTONS */
+    .checkout-btn,
+    .cancel-btn,
+    .apple-pay-btn,
+    .pay-now-btn {
+        font-size: 14px;
+        padding: 13px;
+    }
+
+    /* RESERVATIONS */
+    .reservation-section h2 {
+        font-size: 20px;
+    }
+
+    /* SHOW MORE */
+    .show-more-btn {
+        width: 100%;
+    }
+}
+
+
+/* SMALL PHONES */
+@media (max-width: 480px) {
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    nav ul {
+        gap: 10px;
+    }
+
+    nav ul li a {
+        font-size: 13px;
+    }
+
+    .cart-item img {
+        height: 180px;
+    }
+
+    .payment-box {
+        padding: 16px;
+    }
+
+    .payment-box input {
+        padding: 11px;
+        font-size: 14px;
+    }
+
+    .checkout-form input,
+    .checkout-form textarea {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .profile-box,
+    .profile-card,
+    .last-order-card {
+        padding: 14px;
+    }
+
+    .switcher button {
+        font-size: 13px;
+    }
+
+    .reservation-section {
+        padding: 0 15px;
+    }
+}
+
+
+/* MOBILE */
+.menu-toggle {
+    display: none;
+}
+@media (max-width: 768px) {
+
+    .header-content {
+        position: relative;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 26px;
+        color: white;
+        cursor: pointer;
+    }
+
+    nav {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #000;
+        display: none;
+        border-top: 1px solid #222;
+    }
+
+    nav.active {
+        display: block;
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+        margin: 0;
+    }
+
+    nav ul li {
+        list-style: none;
+        border-bottom: 1px solid #222;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 16px;
+        color: white;
+        text-decoration: none;
+    }
+
+    nav ul li a:hover {
+        background: #111;
+    }
+}

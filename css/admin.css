@@ -1,0 +1,1146 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f6fa;
+}
+
+/* ===== LAYOUT ===== */
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    width: 220px;
+    min-height: 100vh;
+    padding: 20px;
+
+    background: #ffffff; /* чорний фон */
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    color: rgb(0, 0, 0);
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+}
+
+.sidebar button {
+    padding: 12px;
+    border: 1px solid rgba(61, 61, 61, 0.2);
+    background: transparent;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.2s;
+    text-align: left;
+}
+
+.sidebar button:hover {
+    background: rgb(0, 0, 0);
+    color: rgb(212, 212, 212);
+}
+
+/* ===== CONTENT ===== */
+.content {
+    flex: 1;
+    padding: 20px;
+
+    background-image: url("/assets/1749024191916.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    position: relative;
+}
+
+.content::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 0;
+}
+.content > * {
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: white;
+}
+
+/* ===== ORDER CARD ===== */
+.order-card {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.order-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-top h3 {
+    margin: 0;
+}
+
+/* ===== STATUS BADGES ===== */
+.status {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    color: white;
+    text-transform: capitalize;
+}
+
+.status-new { background: #3498db; }
+.status-preparing { background: #f39c12; }
+.status-on_the_way { background: #9b59b6; }
+.status-delivered { background: #2ecc71; }
+.status-cancelled { background: #e74c3c; }
+
+/* ===== ITEMS ===== */
+.items {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #444;
+}
+
+/* ===== BUTTONS ===== */
+.status-buttons,
+.payment-buttons {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.status-buttons button,
+.payment-buttons button {
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: 0.2s;
+    color: white;
+}
+
+/* STATUS BUTTON COLORS */
+.status-buttons button:nth-child(1) { background: #f39c12; }
+.status-buttons button:nth-child(2) { background: #9b59b6; }
+.status-buttons button:nth-child(3) { background: #2ecc71; }
+.status-buttons button:nth-child(4) { background: #e74c3c; }
+
+/* PAYMENT BUTTON COLORS */
+.payment-buttons button:nth-child(1) { background: #2ecc71; }
+.payment-buttons button:nth-child(2) { background: #f39c12; }
+.payment-buttons button:nth-child(3) { background: #e74c3c; }
+
+button:hover {
+    opacity: 0.85;
+}
+
+/* ===== USERS / MENU ===== */
+.user-card,
+.menu-item {
+    background: white;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+}
+
+
+
+
+.form {
+    background: white;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    display: grid;
+    gap: 12px;
+    max-width: 600px;
+}
+
+/* inputs */
+.form input,
+.form textarea,
+.form select {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    outline: none;
+    font-size: 14px;
+    transition: 0.2s;
+    background: #fafafa;
+}
+
+.form input:focus,
+.form textarea:focus,
+.form select:focus {
+    border-color: #6c5ce7;
+    background: white;
+}
+
+/* textarea */
+.form textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+/* button */
+.form button {
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #f1a20f, #f39c12, #e67e22);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 6px 15px rgba(230, 126, 34, 0.25);
+}
+
+.form button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(230, 126, 34, 0.35);
+}
+
+
+.form label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #333;
+}
+
+.form input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #e67e22;
+}
+
+.menu-item {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.menu-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.menu-item h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.menu-item p {
+    margin: 3px 0;
+    font-size: 13px;
+    color: #666;
+}
+
+.menu-item button {
+    margin-left: auto;
+    background: #e74c3c;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+}
+
+#createMenuView .form{
+    border-left: 5px solid #e67e22;
+}
+#createOrderView .form {
+    border-left: 5px solid #e67e22;
+}
+#createReservationView .form {
+    border-left: 5px solid #e67e22;
+}
+
+.form-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #2d3436;
+}
+
+
+.admin-menu-block {
+    margin-top: 25px;
+}
+
+#adminMenuItems {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.admin-dish-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    cursor: pointer;
+    transition: 0.2s;
+    position: relative;
+}
+
+.admin-dish-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.admin-dish-card input[type="checkbox"] {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 20px;
+    height: 20px;
+}
+
+.admin-dish-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.admin-dish-info {
+    padding: 15px;
+}
+
+.admin-dish-info h4 {
+    margin: 0 0 8px;
+    font-size: 16px;
+}
+
+.admin-dish-info p {
+    margin: 0;
+    font-weight: bold;
+}
+
+.vegan-badge {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 12px;
+    color: green;
+}
+
+
+.admin-order-layout {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+}
+
+/* LEFT FORM */
+.admin-order-layout .form {
+    width: 40%;
+    flex-shrink: 0;
+}
+
+/* RIGHT MENU */
+.admin-menu-side {
+    flex: 1;
+}
+
+/* GRID */
+#adminMenuItems {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+
+.payment-method-buttons {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.payment-method-buttons button {
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: 0.2s;
+    color: white;
+}
+
+/* Cash */
+.payment-method-buttons button:nth-child(1) {
+    background: #3498db;
+}
+
+/* Card */
+.payment-method-buttons button:nth-child(2) {
+    background: #8e44ad;
+}
+
+.payment-method-buttons button:hover {
+    opacity: 0.85;
+}
+
+.admin-menu-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* 2 колонки */
+    gap: 30px;
+    align-items: start;
+}
+
+/* LEFT form */
+.admin-menu-layout .form {
+    flex: 1;
+    max-width: 500px;
+}
+
+/* RIGHT menu list */
+.admin-menu-side {
+    flex: 1;
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.admin-menu-side h3 {
+    margin-top: 0;
+}
+
+.menu-filters {
+    margin-bottom: 15px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    
+}
+
+#menuContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu-filters input,
+.menu-filters select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: #fafafa;
+    font-size: 14px;
+}
+
+#menuSearch {
+width: 90%;
+}
+
+#orderSearch{
+    width: 90%;
+}
+
+/* ===== RESERVATION CARD ===== */
+.reservation-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 15px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    transition: 0.2s;
+}
+
+.reservation-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+}
+
+/* HEADER */
+.reservation-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reservation-top h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+/* DETAILS */
+.reservation-info {
+    margin-top: 10px;
+    display: grid;
+    gap: 6px;
+    font-size: 14px;
+    color: #444;
+}
+
+.reservation-info p {
+    margin: 0;
+}
+
+/* DATE/TIME highlight */
+.reservation-datetime {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+    font-weight: bold;
+    color: #2d3436;
+}
+
+.reservation-datetime span {
+    background: #ecfdf3;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+/* PEOPLE badge */
+.reservation-people {
+    display: inline-block;
+    margin-top: 8px;
+    background: #f1f2f6;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+/* STATUS (reuse + better look) */
+.reservation-card .status {
+    background: #2ecc71;
+}
+
+/* BUTTONS */
+.reservation-card .status-buttons {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.reservation-card .status-buttons button {
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    color: white;
+    transition: 0.2s;
+}
+
+.reservation-card .status-buttons button:nth-child(1) {
+    background: #3498db;
+}
+
+.reservation-card .status-buttons button:nth-child(2) {
+    background: #2ecc71;
+}
+
+.reservation-card .status-buttons button:nth-child(3) {
+    background: #e74c3c;
+}
+
+.reservation-card .status-buttons button:hover {
+    opacity: 0.85;
+}
+/* ===== RESERVATION FORM WRAPPER ===== */
+.reservation-form {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    max-width: 500px;
+    display: grid;
+    gap: 12px;
+    border-left: 5px solid #e67e22;
+}
+
+/* inputs */
+.reservation-form input {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: #fafafa;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.reservation-form input:focus {
+    border-color: #2ecc71;
+    background: white;
+    outline: none;
+}
+
+/* button */
+.reservation-form button {
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #f1a20f, #f39c12, #e67e22);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.reservation-form button:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
+}
+
+/* page layout alignment (optional) */
+#createReservationView {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.reservation-card {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 12px;
+}
+.reservation-form input,
+.reservation-form button {
+    width: 98%;
+}
+
+.reservation-form {
+    background: white;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    display: grid;
+    gap: 12px;
+    max-width: 100%;
+}
+
+.reservation-form input,
+.reservation-form select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: #fafafa;
+}
+
+.reservation-form button {
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#orderStatusFilter {
+    background-color: #111;
+    color: #fff;
+    border: 1px solid #333;
+    padding: 10px 14px;
+    font-size: 14px;
+    border-radius: 6px;
+    outline: none;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: 0.3s;
+}
+
+#orderStatusFilter:hover {
+    border-color: #e67e22;
+}
+
+#orderStatusFilter:focus {
+    border-color: #e67e22;
+    box-shadow: 0 0 0 2px rgba(230, 126, 34, 0.2);
+}
+
+.date-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #fafafa;
+    cursor: pointer;
+    font-size: 14px;
+    color: #999; /* сіра початкова */
+    transition: 0.2s;
+}
+
+.date-box.filled {
+    color: #333; /* темна коли вибрано */
+}
+
+.date-box input {
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+    cursor: pointer;
+}
+
+
+.time-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+
+    background: #fafafa;
+    cursor: pointer;
+
+    font-size: 14px;
+    color: #999;
+
+    transition: 0.2s;
+}
+
+.time-box.filled {
+    color: #333;
+}
+
+.time-box input {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+    cursor: pointer;
+}
+
+.date-box {
+    position: relative;
+}
+
+.date-box input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+.time-box {
+    position: relative;
+}
+
+.time-box input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+.date-box, .time-box {
+    user-select: none;
+}
+
+
+
+
+
+
+
+/* modal buttons */
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-actions button {
+    flex: 1;
+    margin: 5px;
+}
+
+
+
+
+
+
+.delete-modal h2 {
+    margin: 0;
+}
+
+.delete-modal p {
+    color: #666;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.modal-actions button {
+    flex: 1;
+
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+
+    cursor: pointer;
+    font-weight: 600;
+}
+
+
+
+@keyframes modalShow {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+
+
+.file-upload {
+    width: 91%;
+    border: 2px dashed #d4af37;
+    border-radius: 18px;
+    padding: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    background: #fffaf0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.file-upload:hover {
+    background: #fff3d6;
+    border-color: #c89b1f;
+    transform: translateY(-2px);
+}
+
+.file-upload-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.upload-icon {
+    font-size: 34px;
+}
+
+.upload-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #222;
+}
+
+#fileName {
+    font-size: 14px;
+    color: #777;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+
+    background: rgba(15, 15, 15, 0.65);
+    backdrop-filter: blur(6px);
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+}
+
+.modal.active {
+    display: flex;
+}
+
+
+
+
+
+
+.modal-content {
+    width: 430px;
+    max-width: 92%;
+
+    background: linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #fffaf0 100%
+    );
+
+    border-radius: 24px;
+
+    padding: 28px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.18),
+        0 6px 20px rgba(0,0,0,0.08);
+
+    border: 1px solid rgba(212,175,55,0.2);
+
+    animation: modalShow 0.25s ease;
+    position: relative;
+}
+
+/* TITLE */
+.modal-content h2 {
+    margin: 0;
+
+    font-size: 28px;
+    font-weight: 700;
+
+    color: #222;
+}
+
+/* TEXT */
+.delete-modal p {
+    margin: 0;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* INPUTS */
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border-radius: 14px;
+    border: 1px solid #e4e4e4;
+
+    font-size: 15px;
+
+    background: white;
+
+    transition: 0.25s;
+    box-sizing: border-box;
+}
+
+.modal-content textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.modal-content input:focus,
+.modal-content textarea:focus,
+.modal-content select:focus {
+    outline: none;
+
+    border-color: #d4af37;
+
+    box-shadow:
+        0 0 0 4px rgba(212,175,55,0.15);
+}
+
+/* BUTTONS */
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.modal-actions button {
+    flex: 1;
+
+    border: none;
+    border-radius: 14px;
+
+    padding: 14px;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+/* SAVE BUTTON */
+.modal-actions button:first-child {
+    background: linear-gradient(
+        135deg,
+        #d4af37,
+        #f1c94a
+    );
+
+    color: #222;
+}
+
+.modal-actions button:first-child:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(212,175,55,0.35);
+}
+
+/* CANCEL / DELETE */
+.modal-actions .danger,
+.modal-actions button:last-child {
+    background: #f4f4f4;
+    color: #333;
+}
+
+.modal-actions .danger:hover,
+.modal-actions button:last-child:hover {
+    background: #ececec;
+}
+
+/* DELETE MODAL */
+.delete-modal {
+    text-align: center;
+}
+
+.delete-modal h2 {
+    font-size: 30px;
+}
+
+/* ANIMATION */
+@keyframes modalShow {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+.close-modal {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+
+    width: 36px;
+    height: 36px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #f3f3f3;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    transition: 0.2s;
+}
+
+.close-modal:hover {
+    background: #e7e7e7;
+    transform: rotate(90deg);
+}
+
+
+
+
+
+/* Edit */
+.menu-actions button:first-child {
+    background: #3498db;
+    color: white;
+}
+
+.menu-actions button:first-child:hover {
+    background: #217dbb;
+}
+
+/* Delete */
+.menu-actions button:last-child {
+    background: #e74c3c;
+    color: white;
+}
+
+.menu-actions button:last-child:hover {
+    background: #c0392b;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    text-decoration: none;
+
+    background: rgb(0, 0, 0);
+    color: #fff;
+
+    padding: 12px 16px;
+    margin-bottom: 25px;
+
+    border-radius: 12px;
+
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+.back-btn:hover {
+    background: #e67e22;
+    transform: translateX(-3px);
+}
+
+.back-btn i {
+    font-size: 13px;
+}
+

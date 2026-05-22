@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>My Cart - Monte Bello</title>
+    <link rel="stylesheet" href="css/order.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/loader.css">
+    <link rel="stylesheet" href="css/user.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <h2>Monte Bello</h2>
+            <p>Loading your experience...</p>
+        </div>
+    </div>
+    <header>
+        <div class="container header-content">
+            <h1 class="logo">Monte Bello</h1>
+    
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+    
+            <nav id="navMenu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="order.html">Order Online</a></li>
+                    <li><a href="booking.html">Book a Table</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li id="userSection"></li>
+                    <li>
+                        <a href="#" class="cart-icon" id="cartIcon">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <li id="adminBtn" style="display:none;">
+        <a href="admin.html">
+            <i class="fa-solid fa-lock"></i>
+            Admin
+        </a>
+    </li>
+    
+    <div class="switcher">
+        <button onclick="showOrders()">Orders</button>
+        <button onclick="showReservation()">Reservation</button>
+    </div>
+    
+    <div class="slider-wrapper">
+        <div id="slider" class="slider">
+    
+            <!-- ORDERS -->
+            <div class="panel">
+    
+                <div class="cart-page-container">
+    
+                    <div class="cart-main">
+                        <h2>My cart</h2>
+                        <div id="fullCartList"></div>
+    
+                        <div style="margin-top:20px;">
+                            <p><i class="fa-solid fa-tag"></i> Enter a promo code</p>
+                            <p><i class="fa-regular fa-note-sticky"></i> Add a note</p>
+                        </div>
+    
+                        <div id="lastOrderBox" style="margin-top:40px; display:none;">
+                            <h3>Last order</h3>
+                            <div id="lastOrderContent"></div>
+                        </div>
+                    </div>
+    
+                    <div class="cart-summary">
+    
+                        <div class="checkout-form" style="margin-top:30px;">
+                            <h3>Delivery details</h3>
+    
+                            <input id="customerName" placeholder="Name">
+                            <input id="customerEmail" placeholder="Email">
+                            <input id="customerPhone" placeholder="Phone">
+                            <input id="customerAddress" placeholder="Address">
+                            <button id="deliveryBtn">Delivery</button>
+<button id="pickupBtn">Pickup</button>
+                            <textarea id="customerNote" placeholder="Note"></textarea>
+                            <input id="deliveryDate" type="date" class="address-input">
+                            <select id="deliveryTime" class="address-input"></select>                        </div>
+    
+                        <h3>Order summary</h3>
+    
+                        <div class="summary-row"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
+                        <div class="summary-row"><span>Delivery</span><span>FREE</span></div>
+    
+                        <hr style="border-color:#333;">
+    
+                        <div class="summary-row" style="font-weight:bold;font-size:18px;">
+                            <span>Total</span><span id="total">$0.00</span>
+                        </div>
+    
+                        <h3 style="margin-top:20px;">Payment</h3>
+    
+                        <div class="payment-methods">
+                            <label class="payment-option">
+                                <input type="radio" name="paymentMethod" value="card" checked>
+                                <span>Card now</span>
+                            </label>
+    
+                            <label class="payment-option">
+                                <input type="radio" name="paymentMethod" value="cash">
+                                <span>Cash</span>
+                            </label>
+                        </div>
+    
+                        <button class="checkout-btn" onclick="placeOrder()">Checkout</button>
+    
+                    </div>
+    
+                </div>
+    
+            </div>
+    
+            <!-- RESERVATION -->
+            <div class="panel">
+    
+                <div class="reservation-section">
+                    <h2>My reservation</h2>
+                    <div id="profileBooking" class="profile-box"></div>
+                </div>
+    
+            </div>
+    
+        </div>
+    </div>
+
+
+    <div id="paymentModal" class="payment-modal">
+        <div class="payment-box">
+            <button id="closePaymentModal" class="payment-close">×</button>
+    
+            <h2>Complete payment</h2>
+    
+            <button class="apple-pay-btn" onclick="payWithApple()">
+                 Pay
+            </button>
+    
+            <div class="payment-divider">
+                <span>or pay with card</span>
+            </div>
+    
+            <input id="cardName" type="text" placeholder="Cardholder name">
+            <input id="cardNumber" type="text" placeholder="Card number">
+            
+            <div class="card-row">
+                <input id="cardExpiry" type="text" placeholder="MM/YY">
+                <input id="cardCvc" type="text" placeholder="CVC">
+            </div>
+    
+            <button class="pay-now-btn" onclick="payNow()">
+                Pay now
+            </button>
+        </div>
+    </div>
+    
+    
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
+    <script src="js/firebase.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/profile.js"></script>
+    <script>
+        const buttons = document.querySelectorAll(".switcher button");
+        
+        function setActive(index) {
+            buttons.forEach(btn => btn.classList.remove("active"));
+            buttons[index].classList.add("active");
+        }
+        
+        // визначаємо правильний offset
+        function getOffset() {
+            return window.innerWidth <= 768 ? "-50%" : "-60%";
+        }
+        
+        function showOrders() {
+            document.getElementById("slider").style.transform = "translateX(0%)";
+            setActive(0);
+        }
+        
+        function showReservation() {
+            document.getElementById("slider").style.transform = `translateX(${getOffset()})`;
+            setActive(1);
+        }
+        
+        setActive(0);
+        </script>
+</body>
+</html>

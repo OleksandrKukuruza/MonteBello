@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Online - Insieme</title>
+    <link rel="stylesheet" href="css/order.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/sms.css">
+    <link rel="stylesheet" href="css/user.css">
+    <link rel="stylesheet" href="css/loader.css">
+    <link rel="stylesheet" href="css/card.css">
+
+</head>
+<body>
+    <div id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <h2>Monte Bello</h2>
+            <p>Loading your experience...</p>
+        </div>
+    </div>
+    <header>
+        <div class="container header-content">
+            <h1 class="logo">Monte Bello</h1>
+    
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+    
+            <nav id="navMenu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="order.html" class="active">Order Online</a></li>
+                    <li><a href="booking.html">Book a Table</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li id="userSection"></li>
+                    <li>
+                        <a href="#" class="cart-icon" id="cartIcon">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="order-banner">
+        <div class="banner-wrapper">
+            <img src="./assets/image.jpg" alt="Pasta Banner">
+            </div>
+    </section>
+
+    <main class="container">
+        <section class="order-intro">
+            <h1>Order Online</h1>
+            <p>You can order online! Browse our menu items and choose what you'd like to order from us.</p>
+            <div class="status-badge">
+                <span class="dot"></span> Accepting Orders
+            </div>
+        </section>
+
+        <div class="order-type-selector">
+            <button class="type-btn active" id="openModalBtn">Pickup</button>
+            <button class="type-btn" id="deliveryBtnMain">Delivery</button>
+        </div>
+
+        <div class="order-info-bar" id="mainInfoBar">
+            <span>
+                <i class="fa-regular fa-clock"></i> 
+                <span id="displayTimeText">Pickup time: Up to 30 minutes</span> 
+                <a href="#" id="changeTimeLink">Change</a>
+            </span>
+            <span>
+                <i class="fa-solid fa-location-dot"></i> 
+                <span id="displayAddressText">Pickup Address: San Francisco, CA</span> 
+                <a href="#" id="changeAddrLink">Change</a>
+            </span>
+        </div>
+
+        <section class="order-menu-section">
+            <div class="category-tab">MAINS</div>
+            <div class="horizontal-menu-grid" id="mainsContainer"></div>
+        </section>
+        
+        <section class="order-menu-section">
+            <div class="category-tab">PASTA</div>
+            <div class="horizontal-menu-grid" id="pastaContainer"></div>
+        </section>
+        
+        <section class="order-menu-section">
+            <div class="category-tab">DESSERTS</div>
+            <div class="horizontal-menu-grid" id="dessertsContainer"></div>
+        </section>
+        
+        <section class="order-menu-section">
+            <div class="category-tab">DRINKS</div>
+            <div class="horizontal-menu-grid" id="drinksContainer"></div>
+        </section>
+        
+        <section class="order-menu-section">
+            <div class="category-tab">PIZZA</div>
+            <div class="horizontal-menu-grid" id="pizzaContainer"></div>
+        </section>
+        
+        <section class="order-menu-section">
+            <div class="category-tab">SALADS</div>
+            <div class="horizontal-menu-grid" id="saladsContainer"></div>
+        </section>
+
+
+
+
+    <div class="modal-overlay" id="orderModal">
+        <div class="modal-window">
+            <button class="modal-close" id="closeModal">&times;</button>
+            
+            <h2>How would you like to receive your order?</h2>
+            
+            <div class="modal-type-selector">
+                <button class="m-type-btn active" id="modalPickupBtn">Pickup</button>
+                <button class="m-type-btn" id="modalDeliveryBtn">Delivery</button>
+            </div>
+    
+            <div class="modal-content">
+                <div id="pickupContent">
+                    <p class="label">Pickup from:</p>
+                    <p class="address">San Francisco, CA, USA</p>
+                    <p class="label">When:</p>
+                    <div class="radio-group">
+                        <label class="radio-container">
+                            <input type="radio" name="time" id="asapTime" checked>
+                            <span class="checkmark"></span> Up to 30 minutes
+                        </label>
+                        <label class="radio-container">
+                            <input type="radio" name="time" id="scheduleTime">
+                            <span class="checkmark"></span> Schedule for later
+                        </label>
+                    </div>
+                    
+                    <!-- Додаємо цей блок нижче -->
+                    <div id="pickupScheduleDetails" style="display: none; margin-top: 15px;">
+                        <div style="display: flex; gap: 10px;">
+                    
+                            <div style="flex: 1;">
+                                <p class="label" style="font-size: 12px; margin-bottom: 5px;">
+                                    Date
+                                </p>
+                    
+                                <input
+                                    id="pickupDate"
+                                    type="date"
+                                    class="address-input"
+                                    style="width:90%;"
+                                >
+                            </div>
+                    
+                            <div style="flex: 1;">
+                                <p class="label" style="font-size: 12px; margin-bottom: 5px;">
+                                    Time
+                                </p>
+                    
+                                <select
+    id="pickupTime"
+    class="address-input"
+    style="width:90%;"
+>
+</select>
+                            </div>
+                    
+                        </div>
+                    </div>
+                    
+                </div>
+    
+                <div id="deliveryContent" style="display: none;">
+                    <p class="label">Deliver to:</p>
+                    <div class="autocomplete-container">
+                        <input type="text" class="address-input" id="deliveryInput" placeholder="Enter your address">
+                        <div id="autocomplete-list" class="autocomplete-suggestions"></div>
+                    </div>
+                
+                    <div id="deliveryError" style="display: none; color: #ff4d4d; font-size: 13px; margin-top: 8px;">
+                        <i class="fa-solid fa-circle-exclamation"></i> No delivery available for this address
+                    </div>
+                
+                    <!-- Блок часу для Delivery -->
+                    <div id="deliveryTimeSettings" style="display: none; margin-top: 20px;">
+                        <p class="label">When:</p>
+                        <div class="radio-group">
+                            <!-- Змінив ID на унікальні: asapDelivery та scheduleDelivery -->
+                            <label><input type="radio" name="delTime" id="asapDelivery" checked> Up to 60 minutes</label><br>
+                            <label><input type="radio" name="delTime" id="scheduleDelivery"> Schedule for later</label>
+                        </div>
+                    
+                        <!-- Змінив ID на deliveryScheduleDetails -->
+                        <div id="deliveryScheduleDetails" style="display: none; margin-top: 15px;">
+                            <div style="display: flex; gap: 10px;">
+                        
+                                <div style="flex: 1;">
+                                    <p class="label" style="font-size: 12px; margin-bottom: 5px;">
+                                        Date
+                                    </p>
+                        
+                                    <input
+                                        id="deliveryDate"
+                                        type="date"
+                                        class="address-input"
+                                        style="width:90%;" 
+                                    >
+                                </div>
+                        
+                                <div style="flex: 1;">
+                                    <p class="label" style="font-size: 12px; margin-bottom: 5px;">
+                                        Time
+                                    </p>
+                        
+                                    <select
+                                        id="deliveryTime"
+                                        class="address-input"
+                                        style="width:90%;"
+                                    >
+                                    </select>
+                        
+                                </div>
+                        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="modal-footer">
+                    <button class="save-btn" id="saveOrderBtn">Save</button>
+                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+<!-- Затемнення фону -->
+<div class="cart-sidebar-overlay" id="cartOverlay"></div>
+
+<!-- Виїзна панель кошика -->
+<div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-sidebar-header">
+        <div class="cart-title">
+            <strong>Cart</strong> (0 items)
+        </div>
+        <button class="close-cart" id="closeCart">&times;</button>
+    </div>
+    <div class="cart-sidebar-content">
+        <p class="empty-message" style="text-align: center;">Your cart is empty.</p>
+    </div>
+</div>
+
+    <div class="chat-container">
+        <button class="chat-button" id="chatBtn">
+            <i class="far fa-comment-dots"></i>
+        </button>
+
+
+    
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div class="header-info">
+                    <h4>Insieme</h4>
+                    <p><span class="online-dot"></span> We’ll reply as soon as we can</p>
+                </div>
+                <button class="close-btn" id="closeChat">&times;</button>
+            </div>
+            
+            <div class="chat-body">
+                </div>
+    
+            <div class="chat-footer">
+                <input type="text" placeholder="Write your message...">
+                <div class="footer-icons">
+                    <span>😊</span>
+                    <span>📎</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Модальне вікно страви -->
+<div class="dish-modal-overlay" id="dishModal">
+    <div class="dish-modal-window">
+        <button class="dish-modal-close" id="closeDishModal">&times;</button>
+        
+        <div class="dish-modal-img-container">
+            <img src="" alt="" id="modalDishImg">
+        </div>
+
+        <div class="dish-modal-info">
+            <h2 id="modalDishName">★ Spaghetti with Cherry Tomato</h2>
+            <p id="modalDishDesc">A classic dish with an added cherry tomato sweetness...</p>
+            
+            <div class="special-request">
+                <label for="request">Special Request</label>
+                <textarea id="request" placeholder="We'll do our best to accommodate any requests when possible."></textarea>
+            </div>
+
+            <div class="quantity-section">
+                <p>Quantity</p>
+                <div class="quantity-controls">
+                    <button id="minusQty">—</button>
+                    <span id="qtyValue">1</span>
+                    <button id="plusQty">+</button>
+                </div>
+            </div>
+
+            <button class="add-to-cart-big" id="confirmAddToCart">
+                Add to cart | $<span id="modalTotalBtn">12.00</span>
+            </button>
+        </div>
+    </div>
+</div>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+<script src="js/firebase.js"></script>
+<script src="js/script.js"></script>
+<script>
+    
+</script>
+
+    </body>
+</html>

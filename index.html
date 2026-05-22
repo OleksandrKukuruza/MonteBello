@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insieme - Головна</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/sms.css">
+    <link rel="stylesheet" href="css/user.css">
+    <link rel="stylesheet" href="css/loader.css">
+    <link rel="stylesheet" href="css/card.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <h2>Monte Bello</h2>
+            <p>Loading your experience...</p>
+        </div>
+    </div>
+    
+    
+    <header>
+        <div class="container header-content">
+            <h1 class="logo">Monte Bello</h1>
+    
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+    
+            <nav id="navMenu">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="order.html">Order Online</a></li>
+                    <li><a href="booking.html">Book a Table</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li id="userSection"></li>
+                    <li>
+                        <a href="#" class="cart-icon" id="cartIcon">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-overlay">
+            <div class="welcome-box">
+                <h2>Welcome</h2>
+                <p>We are the perfect place to tell our story and let guests learn a little more about us. Real Italian cuisine made with love.</p>
+                <a href="order.html" class="btn-outline">Order Online</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="footer-bottom-info">
+        <div class="container bottom-grid">
+            <div class="bottom-column">
+                <p>Mon - Fri: 11am - 10pm</p>
+                <p>Sat - Sun: 11am - 12am</p>
+            </div>
+            <div class="bottom-column">
+                <p>500 Terry Francine Street</p>
+                <p>San Francisco, CA 94158</p>
+            </div>
+            <div class="bottom-column">
+                <p>Follow Us</p>
+                <div class="social-icons-bottom">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2035 by Monte Bello. Powered and secured by Wix
+        </div>
+    </div>
+</footer>
+
+    <div class="chat-container">
+        <button class="chat-button" id="chatBtn">
+            <i class="far fa-comment-dots"></i>
+        </button>
+
+
+    
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div class="header-info">
+                    <h4>Insieme</h4>
+                    <p><span class="online-dot"></span> We’ll reply as soon as we can</p>
+                </div>
+                <button class="close-btn" id="closeChat">&times;</button>
+            </div>
+            
+            <div class="chat-body">
+                </div>
+    
+            <div class="chat-footer">
+                <input type="text" placeholder="Write your message...">
+                <div class="footer-icons">
+                    <span>😊</span>
+                    <span>📎</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Затемнення фону -->
+<div class="cart-sidebar-overlay" id="cartOverlay"></div>
+
+<!-- Виїзна панель кошика -->
+<div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-sidebar-header">
+        <div class="cart-title">
+            <strong>Cart</strong> (0 items)
+        </div>
+        <button class="close-cart" id="closeCart">&times;</button>
+    </div>
+    <div class="cart-sidebar-content">
+        <p class="empty-message" style="text-align: center;">Your cart is empty.</p>
+    </div>
+</div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
+    <script src="js/firebase.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+</html>

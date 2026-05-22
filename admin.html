@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/icon.css">
+    <title>Admin Panel</title>
+</head>
+<body>
+    <div class="admin-layout">
+
+        <aside class="sidebar">
+            <a href="index.html" class="back-btn">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Back to site</span>
+            </a>
+            <h2>Admin</h2>
+    
+            <button onclick="showView('orders')">Orders</button>
+            <button onclick="showView('reservations')">Reservations</button>
+            <button onclick="showView('users')">Users</button>
+            
+            <button onclick="showView('createMenu')">Create Menu Item</button>
+
+            <button onclick="showView('createOrder')">Create Order</button>
+            <button onclick="showView('createReservation')">Create Reservation</button>
+        </aside>
+    
+        <main class="content">
+    
+            <!-- ORDERS -->
+            <section id="ordersView">
+                <h1>Live Orders</h1>
+                <select id="orderStatusFilter" onchange="filterOrders()">
+                    <option value="all">All</option>
+                    <option value="new">New</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="preparing">Preparing</option>
+                    <option value="on_the_way">On the way</option>
+                    <option value="delivered">Delivered</option>
+                    <option value="ready">Ready</option>
+                    <option value="picked_up">Picked up</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+                <div id="ordersContainer"></div>
+            </section>
+    
+            <section id="reservationsView" style="display:none">
+                <h1>Reservations</h1>
+                <div id="reservationsContainer"></div>
+            </section>
+
+            <!-- USERS -->
+            <section id="usersView" style="display:none">
+                <h1>Users</h1>
+                <div id="usersContainer"></div>
+            </section>
+    
+            <!-- MENU -->
+            <section id="createMenuView" style="display:none">
+
+                <h1>Create Menu Item</h1>
+            
+                <div class="admin-menu-layout">
+            
+                    <!-- LEFT: FORM -->
+                    <div class="form">
+            
+                        <input id="menuName" placeholder="Dish name">
+            
+                        <textarea id="menuDescription" placeholder="Description"></textarea>
+            
+                        <input id="menuPrice" type="number" placeholder="Price">
+                        
+                        <label for="menuImageFile" class="file-upload">
+
+                            <div class="file-upload-content">
+                                <span class="upload-icon">
+                                    <i class="fa-solid fa-camera"></i>
+                                </span>
+
+                                <div>
+                                    <p class="upload-title">Upload dish image</p>
+                                    <span id="fileName">No file selected</span>
+                                </div>
+                            </div>
+                        
+                        </label>
+                        
+                        <input 
+                            id="menuImageFile"
+                            type="file"
+                            accept="image/*"
+                            hidden
+                        >
+                        
+                        <select id="menuCategory">
+                            <option value="mains">Mains</option>
+                            <option value="pasta">Pasta</option>
+                            <option value="desserts">Desserts</option>
+                            <option value="drinks">Drinks</option>
+                            <option value="pizza">Pizza</option>
+                            <option value="salads">Salads</option>
+                        </select>
+            
+                        <label>
+                            <input type="checkbox" id="menuVegan">
+                            Vegan
+                        </label>
+            
+                        <label>
+                            <input type="checkbox" id="menuFeatured">
+                            Featured
+                        </label>
+            
+                        <button onclick="createMenuItem()">
+                            Create Dish
+                        </button>
+            
+                    </div>
+            
+                    <!-- RIGHT: LIVE MENU PREVIEW -->
+                    <div class="menu-right">
+
+                        <div class="menu-filters">
+                            <input id="menuSearch" placeholder="Search dish..." oninput="filterMenu()">
+                    
+                            <select id="menuCategoryFilter" onchange="filterMenu()">
+                                <option value="all">All</option>
+                                <option value="mains">Mains</option>
+                                <option value="pasta">Pasta</option>
+                                <option value="desserts">Desserts</option>
+                                <option value="drinks">Drinks</option>
+                                <option value="pizza">Pizza</option>
+                                <option value="salads">Salads</option>
+                            </select>
+                        </div>
+                    
+                        <div id="menuContainer"></div>
+                    
+                    </div>
+                                
+                </div>
+            
+            </section>
+
+<section id="createOrderView" style="display:none">
+
+    <h1>Create Order (Admin)</h1>
+
+    <div class="admin-order-layout">
+
+        <!-- LEFT -->
+        <div class="form">
+
+            <input id="adminCustomerName" placeholder="Customer name">
+
+            <input id="adminCustomerEmail" placeholder="Email">
+
+            <input id="adminCustomerPhone" placeholder="Phone">
+
+            <select id="adminType">
+                <option value="delivery">Delivery</option>
+                <option value="pickup">Pickup</option>
+            </select>
+
+            <input id="adminAddress" placeholder="Address">
+
+
+            <div class="date-box" onclick="openDatePicker('adminDate','adminDateLabel')">
+                <span id="adminDateLabel">Choose date</span>
+                <input id="adminDate" type="date">
+            </div>
+    
+            <div class="time-box" onclick="openTimePicker('adminTime','adminTimeLabel')">
+                <span id="adminTimeLabel">Choose time</span>
+                <input id="adminTime" type="time">
+            </div>
+            
+
+            <select id="adminPayment">
+                <option value="paid">Paid</option>
+                <option value="pending">Pending</option>
+            </select>
+
+            <select id="adminPaymentMethod">
+                <option value="cash">Cash</option>
+                <option value="card">Card</option>
+            </select>
+
+            <button onclick="createAdminOrder()">
+                Create Order
+            </button>
+
+        </div>
+
+        <!-- RIGHT -->
+        <div class="admin-menu-side">
+
+            <h3>Select dishes</h3>
+
+
+
+<div class="menu-filters">
+    <input id="orderSearch" placeholder="Search dish..." oninput="filterAdminMenu()">
+
+    <select id="orderCategoryFilter" onchange="filterAdminMenu()">
+        <option value="all">All</option>
+        <option value="mains">Mains</option>
+        <option value="pasta">Pasta</option>
+        <option value="desserts">Desserts</option>
+        <option value="drinks">Drinks</option>
+        <option value="pizza">Pizza</option>
+        <option value="salads">Salads</option>
+    </select>
+</div>
+
+<div id="adminMenuItems"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="createReservationView" style="display:none">
+
+    <h1>Create Reservation</h1>
+
+    <div class="reservation-form">
+
+        <input id="resFirstName" placeholder="First name">
+        <input id="resLastName" placeholder="Last name">
+        <input id="resPhone" placeholder="Phone">
+
+        <div class="date-box" onclick="openDatePicker('resDate','resDateLabel')">
+            <span id="resDateLabel">Choose date</span>
+            <input id="resDate" type="date">
+        </div>
+
+        <div class="time-box" onclick="openTimePicker('resTime','resTimeLabel')">
+            <span id="resTimeLabel">Choose time</span>
+            <input id="resTime" type="time">
+        </div>
+
+            <select id="resSize">
+            <option value="2">2 people</option>
+            <option value="4">4 people</option>
+            <option value="6">6 people</option>
+            <option value="8">8 people</option>
+        </select>        
+
+        <button onclick="createReservation()">Create Reservation</button>
+
+    </div>
+
+</section>
+        </main>
+    
+    </div>
+
+
+
+
+
+
+    <!-- EDIT MENU MODAL -->
+<div id="editMenuModal" class="modal">
+    <div class="modal-content">
+
+        <h2>Edit dish</h2>
+
+        <input id="editMenuName" placeholder="Name">
+        <textarea id="editMenuDescription" placeholder="Description"></textarea>
+        <input id="editMenuPrice" type="number" placeholder="Price">
+
+        <select id="editMenuCategory">
+            <option value="mains">Mains</option>
+            <option value="pasta">Pasta</option>
+            <option value="desserts">Desserts</option>
+            <option value="drinks">Drinks</option>
+            <option value="pizza">Pizza</option>
+            <option value="salads">Salads</option>
+        </select>
+
+        <div class="modal-actions">
+<button class="btn-save" onclick="saveMenuEdit()">
+    <i class="fa-solid fa-floppy-disk"></i> Save
+</button>
+            <button class="close-modal" onclick="closeEditModal()">✕</button>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div id="deleteModal" class="modal">
+
+    <div class="modal-content delete-modal">
+
+        <h2>Delete dish?</h2>
+
+        <p>
+            This action cannot be undone.
+        </p>
+
+        <div class="modal-actions">
+            <button id="confirmDeleteBtn" class="danger">
+                Delete
+            </button>
+
+            <button onclick="closeDeleteModal()">
+                Cancel
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+<div id="toast" class="toast"></div>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+
+    <script src="js/firebase.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

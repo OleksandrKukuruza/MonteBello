@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insieme - Reserve a Table</title>
+    <link rel="stylesheet" href="css/user.css">
+    <link rel="stylesheet" href="css/booking.css">
+    <link rel="stylesheet" href="css/sms.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/loader.css">
+
+</head>
+<body class="dark-theme">
+    <div id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <h2>Monte Bello</h2>
+            <p>Loading your experience...</p>
+        </div>
+    </div>
+    <header>
+        <div class="container header-content">
+            <h1 class="logo">Monte Bello</h1>
+    
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+    
+            <nav id="navMenu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="order.html">Order Online</a></li>
+                    <li><a href="booking.html" class="active">Book a Table</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li id="userSection"></li>
+                    <li>
+                        <a href="#" class="cart-icon" id="cartIcon">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="booking-section">
+            <div class="container">
+                <div class="booking-header">
+                    <h2>Reserve a Table</h2>
+                    <p>Select your details and we'll try to get the best seats for you.</p>
+                </div>
+    
+                <form class="booking-form" id="bookingForm">
+                    <div class="form-row-booking">
+                
+                        <div class="input-group-booking">
+                            <label>Party size</label>
+                            <select id="partySize">
+                                <option value="2">2 guests</option>
+                                <option value="4">4 guests</option>
+                                <option value="6">6 guests</option>
+                                <option value="8">8 guests</option>
+                            </select>
+                        </div>
+                
+                        <div class="input-group-booking">
+                            <label>Date</label>
+                            <input type="date" id="bookingDate">
+                        </div>
+                
+                        <div class="input-group-booking">
+                            <label>Time</label>
+                            <select id="bookingTime"></select>
+                        </div>
+                
+                        <div class="input-group-booking guest-field">
+                            <label>First name</label>
+                            <input type="text" id="guestFirstName">
+                        </div>
+                        
+                        <div class="input-group-booking guest-field">
+                            <label>Last name</label>
+                            <input type="text" id="guestLastName">
+                        </div>
+                        
+                        <div class="input-group-booking guest-field">
+                            <label>Phone</label>
+                            <div class="phone-input">
+                                <select id="countryCode"></select>
+                                <input type="tel" id="guestPhone" placeholder="67 123 45 67">
+                            </div>
+                                                      
+                        </div>
+                        
+                        <button type="submit" class="find-table-btn">Reserve</button>
+                
+                    </div>
+                </form>                
+            </div>
+        </section>
+    
+        <section class="booking-hero-image">
+            </section>
+    </main>
+
+
+    <section class="contact-section-dark">
+        <div class="container contact-grid">
+            <div class="contact-info-dark">
+                <h2>We would love<br>to hear from you</h2>
+                <div class="contact-details">
+                    <p>Tel: 123 456 6780</p>
+                    <p>info@mysite.com</p>
+                    <br>
+                    <p>500 Terry Francine Street</p>
+                    <p>San Francisco, CA 94158</p>
+                </div>
+                <div class="contact-socials">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+    
+            <div class="contact-form-dark">
+                <form>
+                    <div class="form-row-dark">
+                        <div class="input-wrap">
+                            <label>First name *</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="input-wrap">
+                            <label>Last name *</label>
+                            <input type="text" required>
+                        </div>
+                    </div>
+                    <div class="form-row-dark">
+                        <div class="input-wrap">
+                            <label>Email *</label>
+                            <input type="email" required>
+                        </div>
+                        <div class="input-wrap">
+                            <label>Subject</label>
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="input-wrap full-width">
+                        <label>Leave us a message...</label>
+                        <textarea rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="dark-submit-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-dark">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <p>Mon - Fri: 11am - 10pm</p>
+                <p>Sat - Sun: 11am - 12am</p>
+            </div>
+            <div class="footer-col">
+                <p>500 Terry Francine Street</p>
+                <p>San Francisco, CA 94158</p>
+            </div>
+            <div class="footer-col socials">
+                <p>Follow Us</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2035 by Monte Bello. Powered and secured by Wix</p>
+        </div>
+    </footer>
+
+    <div class="chat-container">
+        <button class="chat-button" id="chatBtn">
+            <i class="far fa-comment-dots"></i>
+        </button>
+
+
+    
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div class="header-info">
+                    <h4>Insieme</h4>
+                    <p><span class="online-dot"></span> We’ll reply as soon as we can</p>
+                </div>
+                <button class="close-btn" id="closeChat">&times;</button>
+            </div>
+            
+            <div class="chat-body">
+                </div>
+    
+            <div class="chat-footer">
+                <input type="text" placeholder="Write your message...">
+                <div class="footer-icons">
+                    <span>😊</span>
+                    <span>📎</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
+    <script src="js/firebase.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/booking.js"></script>
+</body>
+</html>
