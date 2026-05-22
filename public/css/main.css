@@ -204,14 +204,17 @@ nav ul li a:hover {
 
     .welcome-box {
         width: 90%;
+        max-width: 100%;
         height: auto;
-        margin: 100px auto 0 auto;
-        padding: 40px 20px;
-        text-align: center;
+
+        margin: 120px auto 0 auto; /* по центру */
+        padding: 30px 20px;
+
+        box-sizing: border-box;
     }
 
     .welcome-box h2 {
-        font-size: 28px;
+        font-size: 26px;
     }
 
     .welcome-box p {
