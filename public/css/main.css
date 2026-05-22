@@ -202,6 +202,26 @@ nav ul li a:hover {
 }
 @media (max-width: 768px) {
 
+    .welcome-box {
+        width: 90%;
+        height: auto;
+        margin: 100px auto 0 auto;
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .welcome-box h2 {
+        font-size: 28px;
+    }
+
+    .welcome-box p {
+        font-size: 14px;
+    }
+
+    .btn-outline {
+        font-size: 12px;
+        padding: 8px 18px;
+    }
     .header-content {
         position: relative;
         flex-direction: row;
@@ -251,5 +271,28 @@ nav ul li a:hover {
 
     nav ul li a:hover {
         background: #111;
+    }
+
+    .bottom-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .footer-bottom-info {
+        padding: 40px 20px 20px;
+    }
+
+    .bottom-column {
+        gap: 10px;
+    }
+
+    .social-icons-bottom {
+        justify-content: center;
+    }
+
+    .copyright {
+        margin-top: 30px;
+        font-size: 11px;
     }
 }
