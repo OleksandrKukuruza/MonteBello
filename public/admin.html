@@ -18,6 +18,10 @@
             </a>
             <h2>Admin</h2>
     
+            <button onclick="showView('messages')">
+                Messages
+            </button>
+
             <button onclick="showView('orders')">Orders</button>
             <button onclick="showView('reservations')">Reservations</button>
             <button onclick="showView('users')">Users</button>
@@ -30,6 +34,12 @@
     
         <main class="content">
     
+<section id="messagesView" style="display:none">
+    <h1>Messages</h1>
+
+    <div id="messagesContainer"></div>
+</section>
+            
             <!-- ORDERS -->
             <section id="ordersView">
                 <h1>Live Orders</h1>

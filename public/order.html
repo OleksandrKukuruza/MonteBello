@@ -34,7 +34,7 @@
                     <li><a href="menu.html">Menu</a></li>
                     <li><a href="order.html" class="active">Order Online</a></li>
                     <li><a href="booking.html">Book a Table</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                     <li id="userSection"></li>
                     <li>
                         <a href="#" class="cart-icon" id="cartIcon">
@@ -275,13 +275,13 @@
             <div class="chat-body">
                 </div>
     
-            <div class="chat-footer">
-                <input type="text" placeholder="Write your message...">
-                <div class="footer-icons">
-                    <span>😊</span>
-                    <span>📎</span>
+                <div class="chat-footer">
+                    <input type="text" id="chatInput" placeholder="Write your message... + email">
+                
+                    <button id="sendMsgBtn" class="send-btn">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
                 </div>
-            </div>
         </div>
     </div>
 
@@ -326,9 +326,8 @@
 
 <script src="js/firebase.js"></script>
 <script src="js/script.js"></script>
-<script>
-    
-</script>
+<script src="js/sms.js"></script>
+
 
     </body>
 </html>

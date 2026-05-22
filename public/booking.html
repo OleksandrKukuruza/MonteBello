@@ -33,7 +33,7 @@
                     <li><a href="menu.html">Menu</a></li>
                     <li><a href="order.html">Order Online</a></li>
                     <li><a href="booking.html" class="active">Book a Table</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                     <li id="userSection"></li>
                     <li>
                         <a href="#" class="cart-icon" id="cartIcon">
@@ -127,31 +127,28 @@
             </div>
     
             <div class="contact-form-dark">
-                <form>
-                    <div class="form-row-dark">
-                        <div class="input-wrap">
-                            <label>First name *</label>
-                            <input type="text" required>
-                        </div>
-                        <div class="input-wrap">
-                            <label>Last name *</label>
-                            <input type="text" required>
-                        </div>
+                <form class="contact-form" id="contactForm">
+
+                    <div class="input-wrap">
+                        <input type="text" id="name" placeholder="First name" required>
                     </div>
-                    <div class="form-row-dark">
-                        <div class="input-wrap">
-                            <label>Email *</label>
-                            <input type="email" required>
-                        </div>
-                        <div class="input-wrap">
-                            <label>Subject</label>
-                            <input type="text">
-                        </div>
+                
+                    <div class="input-wrap">
+                        <input type="text" id="lastname" placeholder="Last name" required>
                     </div>
+                
+                    <div class="input-wrap">
+                        <input type="email" id="email" placeholder="Email" required>
+                    </div>
+                
+                    <div class="input-wrap">
+                        <input type="text" id="subject" placeholder="Subject">
+                    </div>
+                
                     <div class="input-wrap full-width">
-                        <label>Leave us a message...</label>
-                        <textarea rows="3"></textarea>
+                        <textarea id="message" placeholder="Message..." required></textarea>
                     </div>
+                
                     <button type="submit" class="dark-submit-btn">Submit</button>
                 </form>
             </div>
@@ -201,13 +198,13 @@
             <div class="chat-body">
                 </div>
     
-            <div class="chat-footer">
-                <input type="text" placeholder="Write your message...">
-                <div class="footer-icons">
-                    <span>😊</span>
-                    <span>📎</span>
+                <div class="chat-footer">
+                    <input type="text" id="chatInput" placeholder="Write your message... + email">
+                
+                    <button id="sendMsgBtn" class="send-btn">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
                 </div>
-            </div>
         </div>
     </div>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
@@ -217,5 +214,6 @@
     <script src="js/firebase.js"></script>
     <script src="js/script.js"></script>
     <script src="js/booking.js"></script>
+    <script src="js/sms.js"></script>
 </body>
 </html>

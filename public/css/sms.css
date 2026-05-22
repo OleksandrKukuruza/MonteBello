@@ -112,3 +112,50 @@
 }
 
 .footer-icons { color: #888; cursor: pointer; display: flex; gap: 10px; }
+
+
+.send-btn {
+    background: #e67e22;
+    border: none;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.send-btn:hover {
+    background: #cf6018;
+}
+
+
+.chat-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+}
+
+/* USER (праворуч) */
+.user-msg {
+    align-self: flex-end;
+    background: #000;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 12px 12px 0 12px;
+    max-width: 70%;
+}
+
+/* ADMIN (ліворуч) */
+.admin-msg {
+    align-self: flex-start;
+    background: #e67e22;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 12px 12px 12px 0;
+    max-width: 70%;
+}

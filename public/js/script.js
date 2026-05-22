@@ -1,23 +1,86 @@
-// ЛОГІКА ЧАТУ 
+
 const chatBtn = document.getElementById('chatBtn');
 const chatWindow = document.getElementById('chatWindow');
 const closeChat = document.getElementById('closeChat');
-const chatInput = document.querySelector('.chat-footer input');
+const chatInput = document.getElementById("chatInput");
+const chatBody = document.querySelector('.chat-body');
 
-if (chatBtn && chatWindow) {
-    chatBtn.onclick = function() {
+if (chatBtn && chatWindow && closeChat && chatInput) {
+
+    chatBtn.onclick = () => {
         chatWindow.style.display = 'flex';
         chatBtn.style.display = 'none';
-        setTimeout(() => {
-            if (chatInput) chatInput.focus();
-        }, 100);
-    }
+        setTimeout(() => chatInput.focus(), 100);
+    };
 
-    closeChat.onclick = function() {
+    closeChat.onclick = () => {
         chatWindow.style.display = 'none';
         chatBtn.style.display = 'block';
-    }
+    };
+
+    chatInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") sendMessage();
+    });
 }
+
+const sendBtn = document.getElementById("sendMsgBtn");
+
+if (sendBtn) {
+    sendBtn.addEventListener("click", sendMessage);
+}
+
+// send message
+function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+
+    // USER -> Firebase
+    db.collection("messages").add({
+        text: text,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        role: "user"
+    });
+
+    chatInput.value = "";
+
+    // ADMIN reply (тільки UI, НЕ база)
+    setTimeout(() => {
+        showLocalAdminMessage("Thank you for your message! Wait for the administrator's response.");
+    }, 800);
+}
+
+function showLocalAdminMessage(text) {
+    const div = document.createElement("div");
+    div.className = "message admin-msg";
+    div.textContent = text;
+
+    chatBody.appendChild(div);
+
+    // автоскрол вниз
+    chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+
+
+
+// realtime messages
+db.collection("messages")
+  .orderBy("createdAt")
+  .onSnapshot(snapshot => {
+      chatBody.innerHTML = "";
+
+      snapshot.forEach(doc => {
+          const msg = doc.data();
+
+          const div = document.createElement("div");
+          div.className = "message user-msg";
+          div.textContent = msg.text;
+
+          chatBody.appendChild(div);
+      });
+
+      chatBody.scrollTop = chatBody.scrollHeight;
+  });
 
 
 

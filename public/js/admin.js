@@ -152,7 +152,9 @@ async function updatePayment(orderId, paymentStatus) {
 
 document.addEventListener("DOMContentLoaded", () => {
     checkAdmin();
+
     listenOrders();
+    listenMessages();
 
     loadUsers();
     loadMenu();
@@ -521,6 +523,7 @@ function showView(view) {
     const views = [
         "orders",
         "users",
+        "messages",
         "menu",
         "reservations",
         "createOrder",
@@ -771,4 +774,83 @@ function showToast(message, type = "success") {
     setTimeout(() => {
         toast.classList.remove("show");
     }, 2500);
+}
+
+
+
+
+
+function listenMessages() {
+
+    db.collection("messages")
+      .orderBy("createdAt", "desc")
+      .onSnapshot(snapshot => {
+
+          const container =
+              document.getElementById("messagesContainer");
+
+          container.innerHTML = "";
+
+          snapshot.forEach(doc => {
+
+              const msg = doc.data();
+
+              container.innerHTML += `
+                  <div class="message-card">
+
+                      <div class="message-top">
+
+                          <span class="message-type">
+                              ${msg.type || "chat"}
+                          </span>
+
+                          <button
+                              class="delete-message-btn"
+                              onclick="deleteMessage('${doc.id}')">
+                              Delete
+                          </button>
+
+                      </div>
+
+                      <p>
+                          <strong>Name:</strong>
+                          ${msg.name || msg.firstName || "-"}
+                      </p>
+
+                      <p>
+                          <strong>Email:</strong>
+                          ${msg.email || "-"}
+                      </p>
+
+                      <p>
+                          <strong>Subject:</strong>
+                          ${msg.subject || "-"}
+                      </p>
+
+                      <p>
+                          <strong>Message:</strong>
+                      </p>
+
+                      <div class="message-text">
+                          ${msg.message || msg.text || ""}
+                      </div>
+
+                  </div>
+              `;
+          });
+
+      });
+}
+
+async function deleteMessage(id) {
+
+    const ok = confirm(
+        "Delete this message?"
+    );
+
+    if (!ok) return;
+
+    await db.collection("messages")
+            .doc(id)
+            .delete();
 }

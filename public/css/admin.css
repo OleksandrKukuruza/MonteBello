@@ -1144,3 +1144,44 @@ width: 90%;
     font-size: 13px;
 }
 
+
+
+.message-card{
+    background:#fff;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:15px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.message-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.message-type{
+    background:#111;
+    color:#fff;
+    padding:5px 10px;
+    border-radius:20px;
+    font-size:12px;
+}
+
+.message-text{
+    margin-top:10px;
+    padding:12px;
+    background:#f7f7f7;
+    border-radius:8px;
+    line-height:1.5;
+}
+
+.delete-message-btn{
+    background:#e74c3c;
+    color:white;
+    border:none;
+    padding:8px 14px;
+    border-radius:8px;
+    cursor:pointer;
+}
