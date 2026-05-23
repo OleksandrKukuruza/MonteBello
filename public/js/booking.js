@@ -371,65 +371,70 @@ function isConflict(existingTime, newTime, size) {
     partySize.addEventListener("change", updateAvailableTimes);
     bookingDate.addEventListener("change", updateAvailableTimes);
 
-    bookingForm.addEventListener("submit", async function (e) {
+    let isSubmitting = false;
+
+    bookingForm?.addEventListener("submit", async function (e) {
         e.preventDefault();
     
-        const size = Number(partySize.value);
-        const date = bookingDate.value;
-        const time = bookingTime.value;
-    
-        if (!time || time === "No tables available") {
-            alert("No available tables.");
-            return;
-        }
-    
-        const user = firebase.auth().currentUser;
-    
-        let firstName = "";
-        let lastName = "";
-        let phone = "";
-        let userId = null;
-    
-        if (user) {
-            userId = user.uid;
-    
-            const userDoc = await db.collection("users").doc(user.uid).get();
-            const userData = userDoc.data() || {};
-    
-            firstName = userData.firstName || userData.name || "";
-            lastName = userData.lastName || "";
-            phone = userData.phone || "";
-    
-            if (!phone && guestPhoneField) {
-                phone = guestPhoneField.value.trim();
-            }
-        } else {
-            firstName = document.getElementById("guestFirstName").value.trim();
-            lastName = document.getElementById("guestLastName").value.trim();
-            phone = document.getElementById("guestPhone").value.trim();
-    
-            if (!firstName || !lastName || !phone) {
-                alert("Please fill in your contact details.");
-                return;
-            }
-        }
-    
-        const alreadyBooked = await hasReservationForDate(userId, phone, date);
-    
-        if (alreadyBooked) {
-            alert("You already have a reservation for this date.");
-            return;
-        }
-    
-        const tableId = await getAvailableTable(size, date, time);
-    
-        if (!tableId) {
-            alert("No available tables.");
-            await updateAvailableTimes();
-            return;
-        }
+        if (isSubmitting) return; // 🚫 блокує подвійний клік
+        isSubmitting = true;
     
         try {
+            const size = Number(partySize.value);
+            const date = bookingDate.value;
+            const time = bookingTime.value;
+    
+            if (!time || time === "No tables available") {
+                alert("No available tables.");
+                return;
+            }
+    
+            const user = firebase.auth().currentUser;
+    
+            let firstName = "";
+            let lastName = "";
+            let phone = "";
+            let userId = null;
+    
+            if (user) {
+                userId = user.uid;
+    
+                const userDoc = await db.collection("users").doc(user.uid).get();
+                const userData = userDoc.data() || {};
+    
+                firstName = userData.firstName || userData.name || "";
+                lastName = userData.lastName || "";
+                phone = userData.phone || "";
+    
+                if (!phone && guestPhoneField) {
+                    phone = guestPhoneField.value.trim();
+                }
+            } else {
+                firstName = document.getElementById("guestFirstName").value.trim();
+                lastName = document.getElementById("guestLastName").value.trim();
+                phone = document.getElementById("guestPhone").value.trim();
+    
+                if (!firstName || !lastName || !phone) {
+                    alert("Please fill in your contact details.");
+                    return;
+                }
+            }
+    
+            const alreadyBooked = await hasReservationForDate(userId, phone, date);
+    
+            if (alreadyBooked) {
+                alert("You already have a reservation for this date.");
+                return;
+            }
+    
+            const tableId = await getAvailableTable(size, date, time);
+    
+            if (!tableId) {
+                alert("No available tables.");
+                await updateAvailableTimes();
+                return;
+            }
+    
             await db.collection("reservations").add({
                 userId,
                 firstName,
@@ -446,18 +451,22 @@ function isConflict(existingTime, newTime, size) {
             alert(`Reservation confirmed.\nTable: ${tableId}\n${date} ${time}`);
     
             bookingForm.reset();
-bookingDate.value = todayString;
-
-await updateAvailableSizes();
-await updateAvailableTimes();
-partySize.value = "";
-bookingTime.innerHTML = "";
-bookingTime.disabled = true;
+            bookingDate.value = getLocalDateString();
+    
+            await updateAvailableSizes();
+            await updateAvailableTimes();
+    
+            partySize.value = "";
+            bookingTime.innerHTML = "";
+            bookingTime.disabled = true;
+    
         } catch (error) {
             console.error(error);
             alert("Failed to save reservation.");
+        } finally {
+            isSubmitting = false; // 🔓 розблокування
         }
-    });    
+    });
     
     updateAvailableTimes();
 }

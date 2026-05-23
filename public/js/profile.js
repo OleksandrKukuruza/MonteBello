@@ -332,6 +332,16 @@ window.increaseFullCartQty = function(index) {
     loadCartPage();
 };
 
+document.addEventListener("DOMContentLoaded", () => {
+    if (document.getElementById("fullCartList")) {
+        loadCartPage();
+    }
+
+    if (document.getElementById("menuContainer")) {
+        loadMenuPage();
+    }
+});
+
 window.decreaseFullCartQty = function(index) {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const item = cart[index];
@@ -665,27 +675,43 @@ if (order.date && order.time) {
 }
 
 
-async function loadLastOrder(user) {
+async function loadLastOrder() {
+    const user = firebase.auth().currentUser;
+
+    
     if (!user) return;
 
     const box = document.getElementById("lastOrderBox");
     const content = document.getElementById("lastOrderContent");
 
-    const snapshot = await db.collection("orders")
-        .where("userId", "==", user.uid)
-        .orderBy("createdAt", "desc")
-        .limit(1)
-        .get();
+    if (!box || !content) return;
 
-    if (snapshot.empty) {
+    try {
+        const snapshot = await db.collection("orders")
+            .where("userId", "==", user.uid)
+            .orderBy("createdAt", "desc")
+            .limit(1)
+            .get();
+
+        if (snapshot.empty) {
+            box.style.display = "none";
+            return;
+        }
+
+        const doc = snapshot.docs[0];
+
+        const lastOrder = {
+            id: doc.id,
+            ...doc.data()
+        };
+
+        box.style.display = "block";
+        renderLastOrder(lastOrder);
+
+    } catch (err) {
+        console.error("loadLastOrder error:", err);
         box.style.display = "none";
-        return;
     }
-
-    const order = snapshot.docs[0].data();
-
-    box.style.display = "block";
-    renderLastOrder(order);
 }
 
 
