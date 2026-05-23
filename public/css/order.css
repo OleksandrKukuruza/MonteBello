@@ -26,12 +26,13 @@ main.container {
 
 /* Навігація */
 header {
-    padding-bottom: 70px;
-    padding-top: 20px;
+    position: relative; /* Це змусить панель стояти на місці */
+    top: 0;
+    width: 100%;
+    z-index: 10000;
     background-color: #000;
-    backdrop-filter: blur(10px); 
-    color: #fff;
-
+    padding-top: 20px;
+    padding-bottom: 70px; /* Твій оригінальний відступ */
 }
 
 .header-content {
@@ -841,7 +842,6 @@ nav ul li a:hover {
     z-index: 1;
 }
 header{
-    position: sticky;
     top: 0;
     z-index: 10000;
 }
