@@ -665,42 +665,27 @@ if (order.date && order.time) {
 }
 
 
-async function loadLastOrder() {
-    const user = firebase.auth().currentUser;
-
+async function loadLastOrder(user) {
     if (!user) return;
 
     const box = document.getElementById("lastOrderBox");
     const content = document.getElementById("lastOrderContent");
 
-    if (!box || !content) return;
+    const snapshot = await db.collection("orders")
+        .where("userId", "==", user.uid)
+        .orderBy("createdAt", "desc")
+        .limit(1)
+        .get();
 
-    try {
-        const snapshot = await db.collection("orders")
-            .where("userId", "==", user.uid)
-            .orderBy("createdAt", "desc")
-            .limit(1)
-            .get();
-
-        if (snapshot.empty) {
-            box.style.display = "none";
-            return;
-        }
-
-        const doc = snapshot.docs[0];
-
-        const lastOrder = {
-            id: doc.id,
-            ...doc.data()
-        };
-
-        box.style.display = "block";
-        renderLastOrder(lastOrder);
-
-    } catch (err) {
-        console.error("loadLastOrder error:", err);
+    if (snapshot.empty) {
         box.style.display = "none";
+        return;
     }
+
+    const order = snapshot.docs[0].data();
+
+    box.style.display = "block";
+    renderLastOrder(order);
 }
 
 
