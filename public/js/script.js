@@ -655,7 +655,11 @@ function updateCartUI() {
                 Taxes and shipping are calculated at checkout.
             </p>
 
-            
+            <button class="btn-checkout"
+                    style="width: 100%; background: #000; color: #fff; padding: 14px; border: none; font-weight: bold; margin-bottom: 10px; cursor: pointer;">
+                Checkout
+            </button>
+
             <button class="btn-view-cart"
                     style="width: 100%; background: #fff; color: #000; padding: 14px; border: 1px solid #000; font-weight: bold; margin-bottom: 15px; cursor: pointer;">
                 View Cart
